@@ -45,6 +45,18 @@ bool Effect::loadHorizontalSpriteSheet(std::string name, float qtty){
     return true;
 }
 
+bool Effect::loadHorizontalSpriteSheet(sf::Image image, float qtty){
+    float height = image.getSize().y;
+    float width  = image.getSize().x/qtty;
+    sf::Texture auxText;
+    for(int i = 0; i < qtty; ++i){
+        if(i*width > image.getSize().x) return false;
+        auxText.loadFromImage(image, sf::IntRect(i*width,0,width, height));
+        animation.push_back(auxText);
+    }
+    return true;
+}
+
 bool Effect::loadVerticalSpriteSheet(std::string name,float qtty){
     sf::Image spriteSheetImage;
     if(! spriteSheetImage.loadFromFile(name)) return false;
@@ -57,6 +69,18 @@ bool Effect::loadVerticalSpriteSheet(std::string name,float qtty){
             auxText.loadFromImage(spriteSheetImage, sf::IntRect(0,i*height,width, height));
             animation.push_back(auxText);
         }
+    }
+    return true;
+}
+bool Effect::loadVerticalSpriteSheet(sf::Image image,float qtty){
+
+    float width = image.getSize().x;
+    float height = image.getSize().y/qtty;
+    sf::Texture auxText;
+    for(int i = 0; i < qtty; ++i){
+        if(i*height > image.getSize().y) return false;
+        auxText.loadFromImage(image, sf::IntRect(0,i*height,width, height));
+        animation.push_back(auxText);
     }
     return true;
 }
@@ -80,6 +104,26 @@ bool Effect::loadSpriteSheet(std::string name, float rows, float columns, int la
                 auxText.loadFromImage(spriteSheetImage, sf::IntRect(i*width,k*height,width, height));
                 animation.push_back(auxText);
             }
+        }
+    }
+    return true;
+}
+
+bool Effect::loadSpriteSheet(sf::Image image, float rows, float columns, int lastRowQtty){
+    int lastRow = lastRowQtty;
+    if(lastRowQtty < 0) lastRow = columns;
+    
+    float width = image.getSize().x/columns;
+    float height = image.getSize().y/rows;
+    sf::Texture auxText;
+    int qttyColumns = columns;
+    for(int k = 0; k < rows; ++k){
+        if(k*height > image.getSize().y) return false;
+        if(k == rows -1) qttyColumns = lastRow;
+        for(int i = 0; i < qttyColumns; ++i){
+            if(i*width > image.getSize().x) return false;
+            auxText.loadFromImage(image, sf::IntRect(i*width,k*height,width, height));
+            animation.push_back(auxText);
         }
     }
     return true;

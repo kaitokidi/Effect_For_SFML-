@@ -112,14 +112,17 @@ public:
             //parameter it will be lastRowQtty = columns;
         //The order will be from left to right and top to bottom.
     bool loadSpriteSheet(std::string name, float rows, float columns, int lastRowQtty =-1);
+    bool loadSpriteSheet(sf::Image image, float rows, float columns, int lastRowQtty =-1);
     
     //Load the animation using a VerticalSpriteSheet.
         //You will need the name and the quantity of images it will have;
     bool loadVerticalSpriteSheet(std::string name, float qtty);
+    bool loadVerticalSpriteSheet(sf::Image image, float qtty);
     
     //Load the animation using a HoritzontalSpriteSheet.
         //You will need the name and the quantity of images it will have;
     bool loadHorizontalSpriteSheet(std::string name, float qtty);
+    bool loadHorizontalSpriteSheet(sf::Image image, float qtty);
 
     
 //UPDATE
