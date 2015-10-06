@@ -109,6 +109,8 @@ int main(int argc, const char* argv[]){
         pj[3].position = sf::Vector2<float>(r.getPosition().x, r.getPosition().y + fr.height-2);
         pj[2].position = sf::Vector2<float>(r.getPosition().x + fr.width-2, r.getPosition().y + fr.height-2);
 
+        effect.rotate(100*deltatime);
+        effect.setOrigin(effect.getLocalBounds().width/2, effect.getLocalBounds().height/2);
         effect.setPosition(r.getPosition());
         effect.setTimeBetweenAnimations(0.1);
     

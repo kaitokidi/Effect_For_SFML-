@@ -159,7 +159,7 @@ void Effect::updateAnimation(float deltatime) {
         timeCounter = 0;
         if(automatic){
             inc_actualAnim();
-            this->setTexture(animation[actualAnimation]);
+            this->setTexture(animation[actualAnimation], false);
         }
     }
 }

@@ -140,7 +140,7 @@ public:
     
     //Enable animation
     void active();
-    //Desable animation
+    //Disable animation
     void inactive();
     
     //enable Automatic animation
