@@ -14,9 +14,7 @@ int Effect::loadAnimation(std::string name, int qtty, std::string ext) {
     animation.clear();
     int errorPos = -1;
     for(int i = 0; i < qtty; ++i){
-        std::stringstream s;
-        s << name << i;
-        std::string path = s.str();
+        std::string path{name + std::to_string(i)};
         if(!loadFrame(path+"."+ext)) return errorPos = i;
     }
     return errorPos;//return -1;

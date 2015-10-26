@@ -2,8 +2,6 @@
 #define EFFECT_H
 
 #include <string>
-#include <sstream>   
-#include <iostream>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
